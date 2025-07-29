@@ -1,83 +1,54 @@
 'use client';
-import React, {useState, useEffect, use} from 'react';
-import  {galleryImages} from "@/constants/assets";
-import Image from "next/image";
+import React, { useState, useEffect } from 'react';
+import Link from 'next/link';
+import Image from 'next/image';
+import dynamic from 'next/dynamic';
+import { galleryImages } from '@/constants/assets';
 
+const GalleryModal = dynamic(() => import('@/app/components/GalleryModal'), { ssr: false });
 
 const Gallery = () => {
     const [modalImage, setModalImage] = useState(null);
 
-    // ESC key handler
     useEffect(() => {
-        const handleKeyDown = (e) => {
+        const handleEsc = (e) => {
             if (e.key === 'Escape') setModalImage(null);
         };
-        window.addEventListener('keydown', handleKeyDown);
-        return () => window.removeEventListener('keydown', handleKeyDown);
+        window.addEventListener('keydown', handleEsc);
+        return () => window.removeEventListener('keydown', handleEsc);
     }, []);
 
-    const handleImageClick = (src) => {
-        setModalImage(src);
-    };
-
-    const handleBackdropClick = (e) => {
-        if (e.target.classList.contains('backdrop')) {
-            setModalImage(null);
-        }
-    };
-
     return (
-        <div className="bg-[#FFE3AA] py-10 text-center" id={'gallery'}>
-            <h2 className="text-2xl font-bold text-[#800000] mb-6">Gallery</h2>
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-4 px-4 md:px-16">
-                {galleryImages.map((src, index) => (
+        <div className="min-h-screen bg-[#FFE3AA] py-10 px-4 md:px-16">
+
+
+            {/* Title */}
+            <h1 className="text-3xl font-bold text-[#800000] text-center mb-8 font-serif">Gallery</h1>
+
+            {/* Image Grid */}
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+                {galleryImages.map((src, i) => (
                     <Image
-                        key={index}
+                        key={i}
                         src={src}
-                        alt={`gallery-${index}`}
+                        alt={`gallery-${i}`}
+                        width={500}
+                        height={500}
                         className="w-full h-48 object-cover rounded-md cursor-pointer hover:scale-105 transition-transform"
-                        onClick={() => handleImageClick(src)}
+                        onClick={() => setModalImage(src)}
+                        loading="lazy"
                     />
                 ))}
             </div>
+            <div className={'flex justify-center mt-4'}>
 
-            <button onClick={() =>{
-                return window.location.href = "/gallery";
-            }} className="mt-6 px-6 py-2 bg-[#800000] text-white rounded-md hover:bg-[#a10000]">
-                View More
-            </button>
+            <Link href={'/gallery'} className="btn bg-[#800000] text-amber-100 rounded-md border-none">view More</Link>
+            </div>
 
             {/* Modal */}
             {modalImage && (
-                <div
-                    className="backdrop fixed inset-0 bg-black bg-opacity-80 flex items-center justify-center z-50"
-                    onClick={handleBackdropClick}
-                    role="dialog"
-                    aria-modal="true"
-                >
-                    <div className="relative max-w-[90vw] max-h-[90vh] p-2">
-                        <button
-                            className="absolute -top-4 -right-4 bg-white text-black rounded-full w-8 h-8 flex items-center justify-center shadow hover:bg-gray-200 transition"
-                            onClick={() => setModalImage(null)}
-                            aria-label="Close"
-                        >
-                            &times;
-                        </button>
-
-                        <div className="relative w-full h-full flex items-center justify-center">
-                            <Image
-                                src={modalImage}
-                                alt="modal-img"
-                                width={1200} // Set a large size to preserve quality
-                                height={800}
-                                className="max-h-[90vh] w-auto h-auto rounded-md shadow-lg"
-                            />
-                        </div>
-                    </div>
-                </div>
+                <GalleryModal src={modalImage} onClose={() => setModalImage(null)} />
             )}
-
-
         </div>
     );
 };

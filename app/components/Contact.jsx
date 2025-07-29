@@ -1,25 +1,42 @@
     "use client";
-    import React,{useState} from "react";
+    import React, {useEffect, useRef, useState} from "react";
+    import HCaptcha from '@hcaptcha/react-hcaptcha';
     import Link from "next/link";
-    import ReCAPTCHA from "react-google-recaptcha";
+
 
     const Contact = () => {
-        const [captchaValue, setCaptchaValue] = useState(null);
+        const [isClient, setIsClient] = useState(false);
+        const hcaptaRef = useRef("");
+        const [token, setToken] = useState("");
 
-        const handleCaptchaChange = (value) => {
-            setCaptchaValue(value);
-            console.log('Captcha value:', value);
-        };
-
-        const handleSubmit = (e) => {
+        const handleSubmit = async (e) => {
             e.preventDefault();
-            if (!captchaValue) {
-                alert('Please complete the reCAPTCHA!');
+            if (!token) {
+                alert("Please verify that you are not a robot");
                 return;
             }
-            // Process your form here
-            alert('Form submitted successfully!');
+            const formData = new FormData(e.target);
+
+            formData.append("access_key", "0101a584-929a-41e1-978a-2a2f24f049ff");
+            // formData.append('h-captcha-response', token);
+
+            const response = await fetch("https://api.web3forms.com/submit", {
+                method: "POST",
+                body: formData
+            });
+
+            const data = await response.json();
+
+            if (data.success) {
+                alert("Form Submitted Successfully");
+                e.target.reset();
+            } else {
+                console.log("Error", data);
+                alert("Error Submitting Form");
+            }
         };
+
+
         return (
             <section className="  py-12 bg-[#FFE3AA] px-6 md:px-20" id="contact">
                 <div className="max-w-6xl mx-auto flex flex-col md:flex-row gap-10">
@@ -69,6 +86,7 @@
                                 <label className="block text-md mb-1 text-[#4E342E]">Name</label>
                                 <input
                                     type="text"
+                                    name={'name'}
                                     placeholder="Enter your name"
                                     className="w-full border-[#800000] border-2 text-gray-800 focus:text-[#800000] px-4 py-2 rounded outline-none "
                                 />
@@ -77,6 +95,7 @@
                                 <label className="block text-md mb-1 text-[#4E342E]">Email</label>
                                 <input
                                     type="email"
+                                    name={'email'}
                                     placeholder="Enter your email"
                                     className="w-full border-[#800000] border-2 focus:text-[#800000] text-gray-800 px-4 py-2 rounded outline-none "
                                 />
@@ -85,20 +104,25 @@
                                 <label className="block text-md mb-1 text-[#4E342E]">Message</label>
                                 <textarea
                                     rows="5"
+                                    name={'message'}
                                     placeholder="Your message"
                                     className="w-full border-[#800000] border-2 focus:text-[#800000] text-gray-800 px-4 py-2 rounded resize-none outline-none "
                                 ></textarea>
                             </div>
-                            <ReCAPTCHA
-                                sitekey="6LeVhZArAAAAAILN3F8vn8a4OsZKS3ScelcKg9RK"
-                                onChange={handleCaptchaChange}
+
+                            <HCaptcha
+                                sitekey={"1edef36c-d866-4718-a9e8-950c336a293e"}
+                                onVerify={setToken}
+                                ref={hcaptaRef}
                             />
+
                             <button
                                 type={'submit'}
                                 className="bg-[#800000] hover:bg-[#a00000] text-white px-6 py-2 rounded font-semibold transition"
                             >
                                 Send Message
                             </button>
+
                         </form>
                     </div>
                 </div>
