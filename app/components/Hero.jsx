@@ -25,6 +25,12 @@ const Hero = () => {
                     <h1 className="text-2xl sm:text-3xl lg:text-4xl font-semibold font-serif text-[#800000] py-2">
                         TEJAS V. GOTARKAR
                     </h1>
+                    <p className={'text-[#800000] text-[lg] font-sans font-semibold'}>
+                        <span className={'text-3xl'}>12+</span> Years of Experience in Yoga,<br/>
+                        BE, DYNS, MA (Yogsgashastra),<br/>
+                        Patanjali Yogpeeth Certified<br/>
+
+                    </p>
                     <button className="btn bg-[#800000] text-amber-100 rounded-md border-none mt-3">
                         Contact
                     </button>

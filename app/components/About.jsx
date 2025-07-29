@@ -1,26 +1,4 @@
-// import React from 'react'
-//
-// const About = () => {
-//     return (
-//         <div className={'p-7'}>
-//             <h2 className={'text-2xl sm:text-3xl lg:text-4xl font-semibold font-serif text-[#800000] py-2'}>
-//                 About
-//             </h2>
-//             <p className={"text-[#4E342E] text-[16px]"}>
-//                 I am a passionate yoga instructor, devoted social worker, and spiritual guide with over 15 years of experience in helping individuals discover harmony in mind, body, and soul.
-//             </p>
-//             <p className={'text-[#4E342E] text-[16px] mt-5'}>
-//                 My journey has been rooted in the belief that true well-being comes from within, and I strive to inspire others to embrace a more conscious and balanced lifestyle.
-//             </p>
-//         </div>
-//     )
-// }
-// export default About
-
-
-
 import React from 'react'
-import Image from 'next/image'
 
 const About = () => {
     return (
@@ -44,19 +22,10 @@ const About = () => {
                 </div>
 
                 <p className="text-[#4E342E]">
-                    I am a passionate yoga instructor, devoted social worker, and spiritual guide with over 15 years of experience in helping individuals discover harmony in mind, body, and soul. My journey has been rooted in the belief that true well-being comes from within, and I strive to inspire others to embrace a more conscious and balanced lifestyle.
+                    I am a passionate yoga instructor, devoted social worker, and spiritual guide with over 12 years of experience in helping individuals discover harmony in mind, body, and soul. My journey has been rooted in the belief that true well-being comes from within, and I strive to inspire others to embrace a more conscious and balanced lifestyle.
                 </p>
 
-                {/*/!* Resume Button *!/*/}
-                {/*<div>*/}
-                {/*    <a*/}
-                {/*        href=""*/}
-                {/*        download*/}
-                {/*        className="inline-block px-6 py-3 bg-sky-600 hover:bg-sky-300 hover:text-sky-900 text-white rounded-lg font-medium transition duration-300"*/}
-                {/*    >*/}
-                {/*        View Research Publications 📄*/}
-                {/*    </a>*/}
-                {/*</div>*/}
+
             </div>
         </section>
     )

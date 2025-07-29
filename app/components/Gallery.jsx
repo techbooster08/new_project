@@ -42,7 +42,7 @@ const Gallery = () => {
             </div>
             <div className={'flex justify-center mt-4'}>
 
-            <Link href={'/gallery'} className="btn bg-[#800000] text-amber-100 rounded-md border-none">view More</Link>
+            <Link href={'/gallery'} className="btn bg-[#800000] text-amber-100 rounded-md border-none">View More</Link>
             </div>
 
             {/* Modal */}

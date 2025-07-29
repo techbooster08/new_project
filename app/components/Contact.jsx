@@ -5,9 +5,9 @@
 
 
     const Contact = () => {
-        const [isClient, setIsClient] = useState(false);
-        const hcaptaRef = useRef("");
-        const [token, setToken] = useState("");
+        const [token, setToken] = useState('');
+
+
 
         const handleSubmit = async (e) => {
             e.preventDefault();
@@ -111,9 +111,10 @@
                             </div>
 
                             <HCaptcha
-                                sitekey={"1edef36c-d866-4718-a9e8-950c336a293e"}
+                                sitekey={"50b2fe65-b00b-4b9e-ad62-3ba471098be2"}
+                                reCaptchaCompat={false}
                                 onVerify={setToken}
-                                ref={hcaptaRef}
+
                             />
 
                             <button
