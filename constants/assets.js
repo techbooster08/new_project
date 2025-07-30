@@ -26,6 +26,15 @@ import gallery13 from '@/assets/gallery-sec/gallery13.webp'
 import gallery14 from '@/assets/gallery-sec/gallery14.webp'
 import gallery15 from '@/assets/gallery-sec/gallery15.webp'
 import gallery16 from '@/assets/gallery-sec/gallery16.webp'
+import gallery17 from '@/assets/gallery-sec/gallery17.webp'
+import gallery18 from '@/assets/gallery-sec/gallery18.webp'
+import gallery19 from '@/assets/gallery-sec/gallery19.webp'
+import gallery20 from '@/assets/gallery-sec/gallery20.webp'
+import gallery21 from '@/assets/gallery-sec/gallery21.webp'
+import gallery22 from '@/assets/gallery-sec/gallery22.webp'
+import gallery23 from '@/assets/gallery-sec/gallery23.webp'
+import gallery24 from '@/assets/gallery-sec/gallery24.webp'
+
 
 
 //social work
@@ -71,6 +80,14 @@ export const galleryAllImages = [
     gallery14,
     gallery15,
     gallery16,
+    gallery17,
+    gallery18,
+    gallery19,
+    gallery20,
+    gallery21,
+    gallery22,
+    gallery23,
+    gallery24,
     ...galleryImages,
 
 ];

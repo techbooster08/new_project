@@ -36,7 +36,7 @@ const Hero = () => {
                     </button>
                     <div className="flex justify-center lg:justify-start gap-3 mt-5">
 
-                        <Link href={'https://www.instagram.com/tejasgotarkar_yogacharya'} >
+                        <Link href={'https://www.instagram.com/yogacharya_tejas/'} >
                             <Image className="w-6 cursor-pointer" src={icons.instagram} alt="Instagram" />
                         </Link>
 

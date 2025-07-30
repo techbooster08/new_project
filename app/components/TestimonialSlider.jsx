@@ -2,8 +2,6 @@
 import React from "react";
 import Slider from "react-slick";
 
-// Your testimonial data...
-
 const testimonials = [
     {
         name: "Aarti Sharma",

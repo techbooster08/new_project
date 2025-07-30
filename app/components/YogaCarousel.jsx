@@ -1,5 +1,4 @@
-'use client'; // If using Next.js App Router
-
+'use client';
 import React, { useRef } from 'react';
 import Image from 'next/image';
 import { Swiper, SwiperSlide } from 'swiper/react';

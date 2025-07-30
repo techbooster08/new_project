@@ -98,9 +98,6 @@ const SocialWorkSlider = () => {
                 ))}
             </Swiper>
 
-            {/* Pagination Bullet Styling */}
-
-
         </section>
     );
 };

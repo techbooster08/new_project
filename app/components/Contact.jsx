@@ -1,5 +1,5 @@
     "use client";
-    import React, {useEffect, useRef, useState} from "react";
+    import React, { useState} from "react";
     import HCaptcha from '@hcaptcha/react-hcaptcha';
     import Link from "next/link";
 
@@ -18,7 +18,6 @@
             const formData = new FormData(e.target);
 
             formData.append("access_key", "0101a584-929a-41e1-978a-2a2f24f049ff");
-            // formData.append('h-captcha-response', token);
 
             const response = await fetch("https://api.web3forms.com/submit", {
                 method: "POST",
@@ -60,7 +59,7 @@
                             <div className="flex items-center gap-4">
                                 <i className="fab fa-instagram text-xl text-[#800000]"></i>
                                 <div>
-                                    <Link href={'https://www.instagram.com/tejasgotarkar_yogacharya'}>
+                                    <Link href={'https://www.instagram.com/yogacharya_tejas/'}>
                                         <h4 className="font-semibold">Instagram</h4>
                                         <p className="text-sm text-gray-800">@tejasgotarkar_yogacharya</p>
                                     </Link>
